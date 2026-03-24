@@ -1,0 +1,39 @@
+codigo para crear un HTML desde JavaScript
+----------------------------------------------------------------------------------------------------
+
+function cargarActv8() {
+    const contenedorPrincipal = document.getElementById("resultados");
+
+    contenedorPrincipal.innerHTML = "";
+
+    contenedorPrincipal.insertAdjacentHTML("beforeend", `
+        <br><br>
+
+        <hr width="60%">
+        <h3> Mostrar números impares usando 'do-while', (desde 0, a un punto 'x') </h3>
+        <hr width="60%">
+
+        <br><br>
+
+        <label for="limiteInput"> Ingrese el Número límite: </label>
+        <input type="number" id="limiteInput">
+
+        <button id="procesarLimite"> Mostrar Numeros inpares </button>
+
+        <br><br>
+
+    `);
+
+document.getElementById("procesarLimite").addEventListener('click', procesarLimite);
+}
+
+-----------------------------------------------------------------------------------------------------
+
+export { NombreDeFunción, NombreDeFunción };
+
+
+Jajaja lol
+
+
+
+
