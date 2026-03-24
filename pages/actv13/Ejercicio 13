@@ -1,0 +1,74 @@
+export function cargarActv13() {
+    const contenedorPrincipal = document.getElementById("resultados");
+
+    contenedorPrincipal.innerHTML = "";
+
+    contenedorPrincipal.insertAdjacentHTML("beforeend", `
+        <br><br>
+
+        <hr width="60%">
+        <h3> Búsqueda en array con ciclo while </h3>
+        <hr width="60%">
+
+        <br><br>
+
+        <label for="dataInput">Ingresa datos separados por coma:</label>
+        <input type="text" id="dataInput" placeholder="Ej: manzana, amarillo, 75">
+
+        <br><br>
+
+        <label for="searchInput">Valor a buscar:</label>
+        <input type="text" id="searchInput" placeholder="Ej: Empanadas ">
+
+        <br><br>
+
+        <button id="btnBuscar">Buscar elemento</button>
+
+        <br><br>
+        <p> (Recuarda que se empieza a contar desde 0) </p>
+        <p id="resultado"></p>
+        <br><br>
+    `);
+
+ document.getElementById("btnBuscar").addEventListener("click", procesarBusqueda);
+}
+
+//---------------------------------------------------------------------------------------------------------------------------
+export function searchInArray(dataArray, searchValue) {
+    let index = 0;
+
+    while (index < dataArray.length) {
+        if (dataArray[index] === searchValue) {
+            return index;  // Encontrado → retorna la posición
+        }
+        index++;
+    }
+
+    return -1; // Si nunca lo encontró
+}
+
+//----------------------------------------------------------------------------------------------------------------------------
+export function procesarBusqueda() {
+    const dataInput = document.getElementById("dataInput").value;
+    const searchValue = document.getElementById("searchInput").value.trim();
+    const result = document.getElementById("resultado");
+
+
+    if (!dataInput.trim() || !searchValue) {
+        result.innerHTML = "Por favor complete ambos campos.";
+        return;
+    }
+
+    // Convertir texto a array
+    const dataArray = dataInput.split(",").map(item => item.trim());
+ //------------------------------------------------------------------------------------------------------------
+    // Ejecutar búsqueda
+    const position = searchInArray(dataArray, searchValue);
+//------------------------------------------------------------------------------------------------------------
+    // Mostrar resultado
+    if (position !== -1) {
+        result.innerHTML = `Elemento encontrado en la posición: ${position}`;
+    } else {
+        result.innerHTML = `Elemento <b>${searchValue}</b> no se encuentra en el array.`;
+    }
+}
